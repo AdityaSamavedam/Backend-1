@@ -13,4 +13,3 @@ function printShakespeare() {
 }
 
 document.getElementById("printButton").addEventListener("click", printShakespeare);
-document.getElementById("shakespeare-image").src = "shakespeareimage.jpg";
