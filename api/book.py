@@ -5,10 +5,10 @@ from model.books import Book  # Import the book model
 import requests
 
 # Create a Blueprint for the book API
-Book_api = Blueprint('book_api', __name__, url_prefix='/api/book')
+book_api = Blueprint('book_api', __name__, url_prefix='/api/book')
 
 # Create the API instance
-api = Api(Book_api)
+api = Api(book_api)
 
 class BookAPI:
     class _Create(Resource):
@@ -24,7 +24,7 @@ class BookAPI:
             summary = body.get('summary')
 
             # Create a new Book object
-            Book_obj = Book(author=author, year=year, price=price, genre=genre, summary=summary)
+            book_obj = Book(author=author, year=year, price=price, genre=genre, summary=summary)
 
 #2: Key Code block to add Book to database 
             # create Book in database
@@ -39,7 +39,7 @@ class BookAPI:
     class _Read(Resource):
         def get(self):
         # Retrieve all Books from the database
-            Books = Books.query.all()
+            Books = Book.query.all()
             json_ready = [book.to_dict() for book in Books]
         # Return the JSON response
             return jsonify(json_ready)
